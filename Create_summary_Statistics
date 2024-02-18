@@ -1,0 +1,151 @@
+// Creates a SUM measure for every currently selected column and hide the column.
+
+foreach(var c in Selected.Columns)
+{
+    var TableName = "train";
+    // Minimum
+    var minMeasure = c.Table.AddMeasure(
+        "Min of " + c.Name,                    // Name
+        "Min(" + c.DaxObjectFullName + ")",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    minMeasure.FormatString = "0.00";
+    minMeasure.Description = "This measure is the Min of column " + c.DaxObjectFullName;
+    
+    // Maximum
+    var MaxMeasure = c.Table.AddMeasure(
+        "Max of " + c.Name,                    // Name
+        "Max(" + c.DaxObjectFullName + ")",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    MaxMeasure.FormatString = "0.00";
+    MaxMeasure.Description = "This measure is the Mean of column " + c.DaxObjectFullName;
+    
+    // Mean
+    var MeanMeasure = c.Table.AddMeasure(
+        "Mean of " + c.Name,                    // Name
+        "Average(" + c.DaxObjectFullName + ")",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    MeanMeasure.FormatString = "0.00";
+    MeanMeasure.Description = "This measure is the Mean of column " + c.DaxObjectFullName;
+    
+    // Median
+    var MedainMeasure = c.Table.AddMeasure(
+        "Median of " + c.Name,                    // Name
+        "Median(" + c.DaxObjectFullName + ")",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    MedainMeasure.FormatString = "0.00";
+    MedainMeasure.Description = "This measure is the Median of column " + c.DaxObjectFullName;
+    
+    // Quartile 25%
+    var Q25Measure = c.Table.AddMeasure(
+        "Q25 of " + c.Name,                    // Name
+        "PERCENTILE.INC(" + c.DaxObjectFullName + ",0.25)",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    Q25Measure.FormatString = "0.00";
+    Q25Measure.Description = "This measure is the Q25 of column " + c.DaxObjectFullName;
+    
+    
+    
+    // Quartile 50%
+    var Q50Measure = c.Table.AddMeasure(
+        "Q50 of " + c.Name,                    // Name
+        "PERCENTILE.INC(" + c.DaxObjectFullName + ",0.5)",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    Q50Measure.FormatString = "0.00";
+    Q50Measure.Description = "This measure is the Q50 of column " + c.DaxObjectFullName;
+    
+    
+    // Quartile 75%
+    var Q75Measure = c.Table.AddMeasure(
+        "Q75 of " + c.Name,                    // Name
+        "PERCENTILE.INC(" + c.DaxObjectFullName + ",0.75)",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    Q75Measure.FormatString = "0.00";
+    Q75Measure.Description = "This measure is the Q75 of column " + c.DaxObjectFullName;
+    
+    
+    // Quartile 100%
+    var Q100Measure = c.Table.AddMeasure(
+        "Q100 of " + c.Name,                    // Name
+        "PERCENTILE.INC(" + c.DaxObjectFullName + ",1)",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    Q100Measure.FormatString = "0.00";
+    Q100Measure.Description = "This measure is the Q100 of column " + c.DaxObjectFullName;
+    
+    
+    // Standard Deviation
+    var sdMeasure = c.Table.AddMeasure(
+        "Std of " + c.Name,                    // Name
+        "STDEV.S(" + c.DaxObjectFullName + ")",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    sdMeasure.FormatString = "0.00";
+    sdMeasure.Description = "This measure is the Standard Deviation of column " + c.DaxObjectFullName;
+    
+    // Varaince 
+    var VarMeasure = c.Table.AddMeasure(
+        "Var of " + c.Name,                    // Name
+        "VAR.S(" + c.DaxObjectFullName + ")",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    VarMeasure.FormatString = "0.00";
+    VarMeasure.Description = "This measure is the Varaince of column " + c.DaxObjectFullName;
+    
+    
+     // IQR
+     var IQRMeasure = c.Table.AddMeasure(
+        "IQR of " + c.Name,                    // Name
+        "PERCENTILE.INC(" + c.DaxObjectFullName + ",0.75)-PERCENTILE.INC(" + c.DaxObjectFullName + ",0.25)",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    IQRMeasure.FormatString = "0.00";
+    IQRMeasure.Description = "This measure is the IQR of column " + c.DaxObjectFullName;
+    
+    
+    // Lower Fence
+    var LowerFence = c.Table.AddMeasure(
+        "LowerFence of " + c.Name,                    // Name
+        "PERCENTILE.INC(" + c.DaxObjectFullName + ",0.25)-(1.5 *(PERCENTILE.INC(" + c.DaxObjectFullName + ",0.75)-PERCENTILE.INC(" + c.DaxObjectFullName + ",0.25)))",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    LowerFence.FormatString = "0.00";
+    LowerFence.Description = "This measure is the Lower Fence of column " + c.DaxObjectFullName;
+    
+        // Upper Fence
+    var UpperFence = c.Table.AddMeasure(
+        "UpperFence of " + c.Name,                    // Name
+        "PERCENTILE.INC(" + c.DaxObjectFullName + ",0.75)+(1.5 *(PERCENTILE.INC(" + c.DaxObjectFullName + ",0.75)-PERCENTILE.INC(" + c.DaxObjectFullName + ",0.25)))",    // DAX expression
+        c.DisplayFolder                        // Display Folder
+    );
+    UpperFence.FormatString = "0.00";
+    UpperFence.Description = "This measure is the Upper Fence of column " + c.DaxObjectFullName;
+    
+  //Upper Outliers of variable
+    var UpperOutliers = c.Table.AddMeasure(
+        "UpperOutliers of " + c.Name,                    // Name
+        "CALCULATE(COUNT(" + c.DaxObjectFullName + "),Filter("+TableName+","+c.DaxObjectFullName+">PERCENTILE.INC(" +c.DaxObjectFullName+",0.75)+(1.5 *(PERCENTILE.INC("+c.DaxObjectFullName+",0.75)-PERCENTILE.INC(" +c.DaxObjectFullName+",0.25)))))", 
+        c.DisplayFolder                        // Display Folder
+    );
+    UpperOutliers.FormatString = "0.00";
+    UpperOutliers.Description = "This measure is count of upper outliers of column " + c.DaxObjectFullName;
+    
+  //Lower Outliers of variable
+  var LowerOutliers = c.Table.AddMeasure(
+        "LowerOutliers of " + c.Name,                    // Name
+        "CALCULATE(COUNT(" + c.DaxObjectFullName + "),Filter("+TableName+","+c.DaxObjectFullName+">PERCENTILE.INC(" +c.DaxObjectFullName+",0.25)-(1.5 *(PERCENTILE.INC("+c.DaxObjectFullName+",0.75)-PERCENTILE.INC(" +c.DaxObjectFullName+",0.25)))))", 
+        c.DisplayFolder                        // Display Folder
+    );
+    LowerOutliers.FormatString = "0.00";
+    LowerOutliers.Description = "This measure is count of lower outliers of column " + c.DaxObjectFullName;  
+    
+    
+    // Hide the base column:
+    c.IsHidden = false;
+}
