@@ -1,202 +1,179 @@
 // Creates Time based  measures for every selected measure.
 foreach(var m in Selected.Measures) {
-    var CQTDMeasure = m.Table.AddMeasure(
-    m.Name + " CQTD",                                       // Name
-        "CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"CQTD\")",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    CQTDMeasure.Description = "This measure is sum of Current quarter to till date of " + m.Name;
-    
-        var PQTDMeasure = m.Table.AddMeasure(
-        m.Name + " PQTD",                                       // Name
-    "CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"PQTD\")",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    PQTDMeasure.Description = "This measure is sum of Previous quarter to till date of " + m.Name;
-    
-    var LYQTDMeasure = m.Table.AddMeasure(
-       m.Name + " LYQTD",                                       // Name
-        "CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"LYQTD\")",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    LYQTDMeasure.Description = "This measure is sum of Previous quarter to till date of " + m.Name;
-    
-        var CYTDMeasure = m.Table.AddMeasure(
-        m.Name + " CYTD",                                       // Name
-    "CALCULATE(" + m.DaxObjectName + ", Calendar[NAYTDBdays] = \"CYTD\")",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    CYTDMeasure.Description = "This measure is sum of Current Year to till date of " + m.Name;
-    
-    
-    
-        var LYYTDMeasure = m.Table.AddMeasure(
-        m.Name + " LYYTD",                                       // Name
-        "CALCULATE(" + m.DaxObjectName + ", Calendar[NAYTDBdays] = \"LYYTD\")",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    LYYTDMeasure.Description = "This measure is sum of Last Year to till date of " + m.Name;
-    
-    
-     var Zeromonth = m.Table.AddMeasure(
-     m.Name + " Zero Month Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 0)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    Zeromonth.Description = "This measure is current month of " + m.Name;
-    
-     var onemonth = m.Table.AddMeasure(
-     m.Name + " One Month Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 1)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    onemonth.Description = "This measure is  Previous month of " + m.Name;
-    
-     var twomonth = m.Table.AddMeasure(
-     m.Name + " Two Month Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 2)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    twomonth.Description = "This measure is Previous Second month of " + m.Name;
-    
-    
-     var thirdmonth = m.Table.AddMeasure(
-     m.Name + " Third Month Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 3)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    thirdmonth.Description = "This measure is Previous third month of " + m.Name;
-    
-     var fourthmonth = m.Table.AddMeasure(
-     m.Name + " Fourth Month Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 4)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    fourthmonth.Description = "This measure is Previous fourth month of " + m.Name;
-    
-    
-      var fifthmonth = m.Table.AddMeasure(
-      m.Name + " Fifth Month Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 5)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    fifthmonth.Description = "This measure is Previous fifth month of " + m.Name;
-    
-    
-      var sixthmonth = m.Table.AddMeasure(
-      m.Name + " Sixth Month Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 6)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    sixthmonth.Description = "This measure is Previous Sixth month of " + m.Name;
-    
-    
-     var SeventhMonth = m.Table.AddMeasure(
-     m.Name + " Seventh Month Ago",                                       // Name
-      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 7)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    SeventhMonth.Description = "This measure is Previous Seventh month of " + m.Name;
-    
-         var EighthMonth = m.Table.AddMeasure(
-         m.Name + " Eighth Month Ago",                                       // Name
-         "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 8)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    EighthMonth.Description = "This measure is Previous Eighth month of " + m.Name;
-    
-    
-      var NinethMonth = m.Table.AddMeasure(
-       m.Name + " Nigth Month Ago",                                       // Name
-         "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 9)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    NinethMonth.Description = "This measure is Previous Nighth month of " + m.Name;
-    
-    
+   var CQTDMeasure = m.Table.AddMeasure(
+      m.Name + " CQTD", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"CQTD\")", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   CQTDMeasure.Description = "This measure is sum of Current quarter to till date of " + m.Name;
+
+   var PQTDMeasure = m.Table.AddMeasure(
+      m.Name + " PQTD", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"PQTD\")", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   PQTDMeasure.Description = "This measure is sum of Previous quarter to till date of " + m.Name;
+
+   var LYQTDMeasure = m.Table.AddMeasure(
+      m.Name + " LYQTD", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"LYQTD\")", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   LYQTDMeasure.Description = "This measure is sum of Previous quarter to till date of " + m.Name;
+
+   var CYTDMeasure = m.Table.AddMeasure(
+      m.Name + " CYTD", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[NAYTDBdays] = \"CYTD\")", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   CYTDMeasure.Description = "This measure is sum of Current Year to till date of " + m.Name;
+
+   var LYYTDMeasure = m.Table.AddMeasure(
+      m.Name + " LYYTD", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[NAYTDBdays] = \"LYYTD\")", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   LYYTDMeasure.Description = "This measure is sum of Last Year to till date of " + m.Name;
+
+   var Zeromonth = m.Table.AddMeasure(
+      m.Name + " Zero Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 0)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   Zeromonth.Description = "This measure is current month of " + m.Name;
+
+   var onemonth = m.Table.AddMeasure(
+      m.Name + " One Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 1)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   onemonth.Description = "This measure is  Previous month of " + m.Name;
+
+   var twomonth = m.Table.AddMeasure(
+      m.Name + " Two Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 2)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   twomonth.Description = "This measure is Previous Second month of " + m.Name;
+
+   var thirdmonth = m.Table.AddMeasure(
+      m.Name + " Third Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 3)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   thirdmonth.Description = "This measure is Previous third month of " + m.Name;
+
+   var fourthmonth = m.Table.AddMeasure(
+      m.Name + " Fourth Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 4)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   fourthmonth.Description = "This measure is Previous fourth month of " + m.Name;
+
+   var fifthmonth = m.Table.AddMeasure(
+      m.Name + " Fifth Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 5)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   fifthmonth.Description = "This measure is Previous fifth month of " + m.Name;
+
+   var sixthmonth = m.Table.AddMeasure(
+      m.Name + " Sixth Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 6)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   sixthmonth.Description = "This measure is Previous Sixth month of " + m.Name;
+
+   var SeventhMonth = m.Table.AddMeasure(
+      m.Name + " Seventh Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 7)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   SeventhMonth.Description = "This measure is Previous Seventh month of " + m.Name;
+
+   var EighthMonth = m.Table.AddMeasure(
+      m.Name + " Eighth Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 8)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   EighthMonth.Description = "This measure is Previous Eighth month of " + m.Name;
+
+   var NinethMonth = m.Table.AddMeasure(
+      m.Name + " Nigth Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 9)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   NinethMonth.Description = "This measure is Previous Nighth month of " + m.Name;
+
    var TenthMonth = m.Table.AddMeasure(
-           m.Name + " Tenth Month Ago",                                       // Name
-         "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 10)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    TenthMonth.Description = "This measure is Previous Tenth month of " + m.Name;
-    
-    
-    
-    var EleventhMonth = m.Table.AddMeasure(
-           m.Name + " Eleventh Month Ago",                                       // Name
-           "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 11)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    EleventhMonth.Description = "This measure is Previous Eleventh month of " + m.Name; 
-    
-    
-     var TwelfthMonth = m.Table.AddMeasure(
-           m.Name + " Twelfth Month Ago",                                       // Name
-           "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 12)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    TwelfthMonth.Description = "This measure is Previous Twelfth month of " + m.Name; 
-    
-    
-         var ThirteenMonth = m.Table.AddMeasure(
-           m.Name + " Thirteen Month Ago",                                       // Name
-           "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 13)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    ThirteenMonth.Description = "This measure is Previous ThirteenMonth month of " + m.Name; 
-    
-    
-    // Add Quarter lag
-     var ZeroQuarterLag = m.Table.AddMeasure(
-     m.Name + " Zero Quarter Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 0)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    ZeroQuarterLag.Description = "This measure is Zero Quarter of " + m.Name;
-    
-    
-     var OneQuarterLag = m.Table.AddMeasure(
-     m.Name + " One Quarter Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 1)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    OneQuarterLag.Description = "This measure is Previous one Quarter of " + m.Name;
-    
-    
-     var TwoQuarterLag = m.Table.AddMeasure(
-     m.Name + " Second Quarter Ago",                                       // Name
-     "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 2)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    TwoQuarterLag.Description = "This measure is Previous second Quarter of " + m.Name;
-    
-    
-         var ThreeQuarterLag = m.Table.AddMeasure(
-         m.Name + " Third Quarter Ago",                                       // Name
-         "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 3)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    ThreeQuarterLag.Description = "This measure is Previous Third Quarter of " + m.Name;
-    
-    
-         var FourthQuarterLag = m.Table.AddMeasure(
-         m.Name + " Fourth Quarter Ago",                                       // Name
-         "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 4)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    FourthQuarterLag.Description = "This measure is Previous Fourth Quarter of " + m.Name;
-    
-    
-    
-             var FifthQuarterLag = m.Table.AddMeasure(
-             m.Name + " Fifth Quarter Ago",                                       // Name
-         "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 5)",     // DAX expression
-        m.DisplayFolder                                        // Display Folder
-    );
-    FifthQuarterLag.Description = "This measure is Previous Fifth Quarter of " + m.Name;
-    
+      m.Name + " Tenth Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 10)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   TenthMonth.Description = "This measure is Previous Tenth month of " + m.Name;
+
+   var EleventhMonth = m.Table.AddMeasure(
+      m.Name + " Eleventh Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 11)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   EleventhMonth.Description = "This measure is Previous Eleventh month of " + m.Name;
+
+   var TwelfthMonth = m.Table.AddMeasure(
+      m.Name + " Twelfth Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 12)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   TwelfthMonth.Description = "This measure is Previous Twelfth month of " + m.Name;
+
+   var ThirteenMonth = m.Table.AddMeasure(
+      m.Name + " Thirteen Month Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[MonthLag] = 13)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   ThirteenMonth.Description = "This measure is Previous ThirteenMonth month of " + m.Name;
+
+   // Add Quarter lag
+   var ZeroQuarterLag = m.Table.AddMeasure(
+      m.Name + " Zero Quarter Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 0)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   ZeroQuarterLag.Description = "This measure is Zero Quarter of " + m.Name;
+
+   var OneQuarterLag = m.Table.AddMeasure(
+      m.Name + " One Quarter Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 1)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   OneQuarterLag.Description = "This measure is Previous one Quarter of " + m.Name;
+
+   var TwoQuarterLag = m.Table.AddMeasure(
+      m.Name + " Second Quarter Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 2)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   TwoQuarterLag.Description = "This measure is Previous second Quarter of " + m.Name;
+
+   var ThreeQuarterLag = m.Table.AddMeasure(
+      m.Name + " Third Quarter Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 3)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   ThreeQuarterLag.Description = "This measure is Previous Third Quarter of " + m.Name;
+
+   var FourthQuarterLag = m.Table.AddMeasure(
+      m.Name + " Fourth Quarter Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 4)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   FourthQuarterLag.Description = "This measure is Previous Fourth Quarter of " + m.Name;
+
+   var FifthQuarterLag = m.Table.AddMeasure(
+      m.Name + " Fifth Quarter Ago", // Name
+      "CALCULATE(" + m.DaxObjectName + ", Calendar[QuarterLag] = 5)", // DAX expression
+      m.DisplayFolder // Display Folder
+   );
+   FifthQuarterLag.Description = "This measure is Previous Fifth Quarter of " + m.Name;
+
 }
-
-
-
