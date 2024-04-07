@@ -1,0 +1,40 @@
+// Creates Time based Growth measures for every selected measure.
+foreach(var m in Selected.Measures) {
+        
+    var QoQDelta = m.Table.AddMeasure(
+    m.Name + " QoQ%" , 
+       
+      "\n"+"Var CQTD = " +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"CQTD\")"
+       + "\n" +"Var PQTD = "  +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"PQTD\")"+"\n"
+     +  "return divide(CQTD-PQTD,PQTD)", // DAX expression
+     m.DisplayFolder );
+     QoQDelta.FormatString = "Percent";
+     QoQDelta.Description = "Quarter on Quarter growth Percentage " + m.Name;
+     
+     
+      var YoYDelta = m.Table.AddMeasure(
+      m.Name + " YoY%" , 
+       
+      "\n"+"Var CQTD = " +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"CQTD\")"
+      + "\n" +"Var LYQTD = "  +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"LYQTD\")"+"\n"
+      +  "return divide(CQTD-LYQTD,LYQTD)", // DAX expression
+     m.DisplayFolder );
+     YoYDelta.FormatString = "Percent";
+     YoYDelta.Description = "Year on Year growth Percentage " + m.Name;
+     
+     
+     var YTDDelta = m.Table.AddMeasure(
+     m.Name + " YTD%" , 
+       
+     "\n"+"Var CYTD = " +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAYTDBdays] = \"CYTD\")"
+     + "\n" +"Var PYTD = "  +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAYTDBdays] = \"PYTD\")"+"\n"
+     +  "return divide(CYTD-PYTD,PYTD)", // DAX expression
+     m.DisplayFolder );
+     YTDDelta.FormatString = "Percent";
+     YTDDelta.Description = "YTD percentage growth of  " + m.Name;
+     
+     
+}
+
+
+
