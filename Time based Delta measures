@@ -1,0 +1,37 @@
+// Creates Time based Delta measures for every selected measure.
+foreach(var m in Selected.Measures) {
+        
+    var QoQDelta = m.Table.AddMeasure(
+      m.Name + " QoQ Delta" , 
+       
+      "\n"+"Var CQTD = " +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"CQTD\")"
+       + "\n" +"Var PQTD = "  +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"PQTD\")"+"\n"
+     +  "return CQTD-PQTD", // DAX expression
+     m.DisplayFolder );
+     QoQDelta.Description = "QoQ of Quarter growth of " + m.Name;
+     
+     
+      var YoYDelta = m.Table.AddMeasure(
+      m.Name + " YoY Delta" , 
+       
+      "\n"+"Var CQTD = " +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"CQTD\")"
+      + "\n" +"Var LYQTD = "  +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAQTDBdays] = \"LYQTD\")"+"\n"
+     +  "return CQTD-LYQTD", // DAX expression
+     m.DisplayFolder );
+     QoQDelta.Description = "YoY on Quarter growth of " + m.Name;
+     
+     
+     var YTDDelta = m.Table.AddMeasure(
+     m.Name + " YTD Delta" , 
+       
+     "\n"+"Var CYTD = " +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAYTDBdays] = \"CYTD\")"
+     + "\n" +"Var PYTD = "  +"CALCULATE(" + m.DaxObjectName + ", Calendar[NAYTDBdays] = \"PYTD\")"+"\n"
+     +  "return CYTD-PYTD", // DAX expression
+     m.DisplayFolder );
+     YTDDelta.Description = "YTD Delta Growth of  " + m.Name;
+     
+     
+}
+
+
+
